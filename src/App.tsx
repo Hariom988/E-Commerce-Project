@@ -8,6 +8,7 @@ function App() {
     <>
       <Router>
         <Header />
+
         <ProductSection />
         <Footer />
       </Router>
