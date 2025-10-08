@@ -3,9 +3,10 @@ import { useProductData } from "../hooks/useProductData";
 import whiteHeartIcon from "../src/assets/white-heart-icon.svg";
 import shareIcon from "../src/assets/share-icon.svg";
 import ProductCardShimmer from "../components/productCardShimmer";
+import { Link } from "react-router-dom";
 
 const ProductSection = () => {
-  const [sliceCount, setSliceCount] = useState(4); // Changed default to 4
+  const [sliceCount, setSliceCount] = useState(4);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -17,7 +18,7 @@ const ProductSection = () => {
       } else if (window.innerWidth > 560) {
         setSliceCount(4);
       } else {
-        setSliceCount(4); // Changed from 2 to 4 for smallest screens
+        setSliceCount(4);
       }
     };
     handleResize();
@@ -57,70 +58,86 @@ const ProductSection = () => {
           id="card-container"
           className="w-full gap-5 mt-6 sm:mt-10 items-center flex flex-col"
         >
-          {/* Responsive grid: 2 cols for smallest screens, then scales up */}
           <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-7 w-full">
             {fetchedData.map((el) => {
               return (
                 <div
                   key={el.id}
                   id="card"
-                  className="p-1.5 sm:p-2 justify-center relative group h-64 sm:h-80 grid grid-flow-row bg-[#D9D9D9]"
+                  className="relative group bg-white rounded-lg overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 ease-in-out cursor-pointer border border-gray-100"
                 >
-                  <div className="absolute group-hover:cursor-pointer flex flex-col gap-2 sm:gap-3 h-full w-full bg-black/40 items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
-                    <div
-                      id="button"
-                      className="w-[80%] items-center flex justify-center h-8 sm:h-10 text-xs sm:text-base text-[#B88E2F] bg-[#D9D9D9]"
-                    >
-                      <p>Add to Cart</p>
-                    </div>
-                    <div
-                      id="icons"
-                      className="flex justify-between items-center text-white gap-6 sm:gap-12 text-xs sm:text-base"
-                    >
-                      <div className="flex justify-between gap-1 sm:gap-2 items-center">
-                        <img
-                          className="w-4 h-4 sm:w-5 sm:h-5"
-                          src={whiteHeartIcon}
-                          alt=""
-                        />
-                        <p>Like</p>
-                      </div>
-                      <div className="flex justify-between gap-1 sm:gap-2 items-center">
-                        <img
-                          className="w-4 h-4 sm:w-5 sm:h-5"
-                          src={shareIcon}
-                          alt=""
-                        />
-                        <p>Share</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="h-44 sm:h-60 w-full overflow-hidden">
+                  <div className="relative h-40 sm:h-56 overflow-hidden bg-gray-50">
                     <img
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                       src={el.imgSrc}
-                      alt=""
+                      alt={el.title}
                     />
+
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center gap-2 sm:gap-3 p-3 sm:p-4">
+                      <button className="w-full max-w-[85%] py-2 sm:py-2.5 px-3 sm:px-4 bg-white text-[#B88E2F] font-semibold text-xs sm:text-sm rounded-md hover:bg-[#B88E2F] hover:text-white transition-all duration-300 transform hover:scale-105 shadow-lg">
+                        Add to Cart
+                      </button>
+                      <div className="flex gap-3 sm:gap-6 text-white text-xs sm:text-sm font-medium">
+                        <button className="flex items-center gap-1 sm:gap-1.5 hover:scale-110 transition-transform duration-200">
+                          <img
+                            className="w-3.5 h-3.5 sm:w-4 sm:h-4"
+                            src={shareIcon}
+                            alt="share"
+                          />
+                          <span>Share</span>
+                        </button>
+                        <button className="flex items-center gap-1 sm:gap-1.5 hover:scale-110 transition-transform duration-200">
+                          <img
+                            className="w-3.5 h-3.5 sm:w-4 sm:h-4"
+                            src={whiteHeartIcon}
+                            alt="like"
+                          />
+                          <span>Like</span>
+                        </button>
+                      </div>
+                    </div>
+
+                    {el.discount && (
+                      <div className="absolute top-2 sm:top-3 right-2 sm:right-3 bg-red-500 text-white text-xs font-bold px-2 py-0.5 sm:py-1 rounded-full shadow-lg">
+                        -{el.discount}%
+                      </div>
+                    )}
                   </div>
-                  <div className="flex flex-col gap-1 sm:gap-2">
-                    <h2 className="text-left text-xs sm:text-base truncate">
+
+                  {/* Product Info - Reduced padding */}
+                  <div className="p-2.5 sm:p-4 bg-white">
+                    <h2 className="text-sm sm:text-base font-semibold text-gray-800 mb-1 truncate group-hover:text-[#B88E2F] transition-colors duration-300">
                       {el.title}
                     </h2>
-                    <div className="flex text-xs sm:text-sm items-center justify-between">
-                      <p>₹{el.price}</p>
-                      <p>⭐{el.rating}</p>
+                    <p className="text-xs text-gray-500 mb-1.5 sm:mb-2 truncate">
+                      {el.category}
+                    </p>
+                    <div className="flex items-center justify-between">
+                      <p className="text-sm sm:text-lg font-bold text-[#B88E2F]">
+                        ₹{el.price.toLocaleString()}
+                      </p>
+                      <div className="flex items-center gap-0.5 sm:gap-1 bg-amber-50 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-md">
+                        <span className="text-amber-500 text-xs sm:text-sm">
+                          ⭐
+                        </span>
+                        <span className="text-xs font-medium text-gray-700">
+                          {el.rating}
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>
               );
             })}
           </div>
-          <div
-            className="w-40 sm:w-56 text-sm sm:text-base duration-300 hover:cursor-pointer hover:bg-[#B88E2F] hover:text-white hover:transition-all h-10 sm:h-12 border-2 font-bold flex items-center justify-center text-[#B88E2F] border-[#B88E2F]"
+
+          <Link
+            className="w-40 sm:w-56 text-sm sm:text-base duration-300 hover:cursor-pointer hover:bg-[#B88E2F] hover:text-white hover:transition-all h-10 sm:h-12 border-2 font-bold flex items-center justify-center text-[#B88E2F] border-[#B88E2F] rounded-md mt-4"
             id="show-more-btn"
+            to={"./shop"}
           >
-            <button>Show More</button>
-          </div>
+            Show More
+          </Link>
         </div>
       </section>
     </>

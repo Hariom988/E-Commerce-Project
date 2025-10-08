@@ -1,5 +1,3 @@
-import React from "react";
-
 const MainSection = () => {
   return (
     <main className="flex justify-end items-center px-11 bg-[url('../src/assets/hero-img.png')] max-w-[1440px] mx-auto bg-cover min-h-[100vh] bg-no-repeat">

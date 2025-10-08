@@ -1,27 +1,16 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-<<<<<<< HEAD
-import MainSection from "../components/mainSection";
-import BrowserSection from "../components/browserSection";
-=======
-import ProductSection from "../components/ProductSection";
->>>>>>> product-section
+import { Outlet } from "react-router-dom";
 function App() {
   return (
     <>
-      <Router>
-        <Header />
-<<<<<<< HEAD
-        <MainSection />
-        <BrowserSection />
-=======
-
-        <ProductSection />
->>>>>>> product-section
-        <Footer />
-      </Router>
+      <Header />
+      <main>
+        {/* The <Outlet/> component is a placeholder where your child routes will be rendered */}
+        <Outlet />
+      </main>
+      <Footer />
     </>
   );
 }

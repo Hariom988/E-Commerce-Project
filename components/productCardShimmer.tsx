@@ -31,18 +31,24 @@ const ProductCardShimmer = () => {
         {Array.from({ length: shimmerCount }).map((_, index) => (
           <div
             key={index}
-            className="p-2 sm:h-80 h-64 bg-gray-200 animate-pulse rounded"
+            className="bg-white rounded-lg overflow-hidden shadow-md border border-gray-100"
           >
-            {/* Image shimmer */}
-            <div className="sm:h-60 h-44 w-full bg-gray-300 rounded mb-4"></div>
+            {/* Image shimmer - Updated to match new compact size */}
+            <div className="h-40 sm:h-56 w-full bg-gray-300 animate-pulse"></div>
 
-            {/* Title shimmer */}
-            <div className="h-4 sm:h-5 w-3/4 bg-gray-300 rounded mb-2"></div>
+            {/* Product info shimmer */}
+            <div className="p-2.5 sm:p-4">
+              {/* Title shimmer */}
+              <div className="h-4 sm:h-5 w-3/4 bg-gray-300 animate-pulse rounded mb-2"></div>
 
-            {/* Price and rating shimmer */}
-            <div className="flex justify-between">
-              <div className="h-3 sm:h-4 w-16 bg-gray-300 rounded"></div>
-              <div className="h-3 sm:h-4 w-12 bg-gray-300 rounded"></div>
+              {/* Category shimmer */}
+              <div className="h-3 w-1/2 bg-gray-300 animate-pulse rounded mb-3"></div>
+
+              {/* Price and rating shimmer */}
+              <div className="flex justify-between items-center">
+                <div className="h-4 sm:h-5 w-20 bg-gray-300 animate-pulse rounded"></div>
+                <div className="h-6 w-12 bg-gray-200 animate-pulse rounded-md"></div>
+              </div>
             </div>
           </div>
         ))}
