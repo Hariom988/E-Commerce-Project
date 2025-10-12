@@ -12,7 +12,6 @@ export function useProductData() {
       .then((res) => res.json())
       .then((data) => {
         setProductData(data.record.products);
-
       });
   }, []);
   return productData;

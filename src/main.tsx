@@ -2,15 +2,15 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import Home from "../components/Home";
-import Shop from "../components/Shop.js";
+import Shop from "../components/Shop";
+import ProductDetail from "../components/productDetail";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />, // The App component is the layout/shell
+    element: <App />,
     children: [
-      // These children will render inside App's <Outlet />
       {
         path: "/",
         element: <Home />,
@@ -18,6 +18,10 @@ const router = createBrowserRouter([
       {
         path: "/shop",
         element: <Shop />,
+      },
+      {
+        path: "/product-details",
+        element: <ProductDetail />,
       },
     ],
   },
