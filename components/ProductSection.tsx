@@ -58,7 +58,6 @@ const ProductSection = () => {
       setIsLoading(false);
     }
   }, [data, sliceCount]);
-
   if (isLoading) {
     return <ProductCardShimmer />;
   }

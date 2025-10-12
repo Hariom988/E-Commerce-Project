@@ -6,6 +6,7 @@ import Search from "../src/assets/search-icon.svg";
 import MenuBtn from "../src/assets/menu-burger.svg";
 import closeBtn from "../src/assets/menu-close-btn.svg";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [btnClicked, setBtnClicked] = useState("");
@@ -41,32 +42,32 @@ const Header = () => {
                   />
                 </div>
                 <div className="flex flex-col mt-7 justify-between gap-4 px-5">
-                  <a href="#">Home</a>
-                  <a href="#Shop">Shop</a>
-                  <a href="#about">About</a>
-                  <a href="#contact">Contact</a>
+                  <Link to="/">Home</Link>
+                  <Link to="/shop">Shop</Link>
+                  <Link to="#about">About</Link>
+                  <Link to="/contact">Contact</Link>
                   <div className="flex flex-col justify-between mt-7 gap-3">
-                    <a
-                      href="#account"
+                    <Link
+                      to="#account"
                       className="inline-flex gap-3 w-full justify-between"
                     >
-                      <a href="#account">Account</a>
+                      <Link to="#account">Account</Link>
                       <img src={Account} alt="" />
-                    </a>
-                    <a
-                      href="#wishList"
+                    </Link>
+                    <Link
+                      to="#wishList"
                       className="inline-flex gap-3 w-full justify-between"
                     >
-                      <a href="#account">Wish List</a>
+                      <Link to="#account">Wish List</Link>
                       <img className="w-7" src={Heart} alt="" />
-                    </a>
-                    <a
-                      href="#cart"
+                    </Link>
+                    <Link
+                      to="#cart"
                       className="inline-flex gap-3 w-full justify-between"
                     >
-                      <a href="#account">Cart</a>
+                      <Link to="#account">Cart</Link>
                       <img className="w-7" src={Cart} alt="" />
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -77,10 +78,10 @@ const Header = () => {
             className="hidden md:flex justify-between w-[75%] lg:w-[70%]"
           >
             <nav className="flex gap-12 items-center justify-between lg:gap-17">
-              <a href="#">Home</a>
-              <a href="#Shop">Shop</a>
-              <a href="#about">About</a>
-              <a href="#contact">Contact</a>
+              <Link to="/">Home</Link>
+              <Link to="/shop">Shop</Link>
+              <Link to="#about">About</Link>
+              <Link to="/contact">Contact</Link>
             </nav>
             <div
               className="flex gap-5 items-center justify-between lg:gap-11"

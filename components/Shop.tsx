@@ -41,7 +41,7 @@ const Shop = () => {
         category: item.category,
         price: item.price,
         rating: item.rating,
-        imgSrc: item.image || "",
+        image: item.image || "",
       }));
       setFetchedData(products);
       setIsLoading(false);
