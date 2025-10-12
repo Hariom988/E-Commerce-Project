@@ -4,6 +4,7 @@ import App from "./App";
 import Home from "../components/Home";
 import Shop from "../components/Shop";
 import ProductDetail from "../components/productDetail";
+import Contact from "../components/contact";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const router = createBrowserRouter([
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: "/product-details",
         element: <ProductDetail />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
       },
     ],
   },
