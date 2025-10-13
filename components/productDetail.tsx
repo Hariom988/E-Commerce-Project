@@ -1,7 +1,7 @@
 // pages/ProductDetail.tsx
 import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import Breadcrumb from "../components/Breadcrumb";
+import Breadcrumb from "./breadcrumb";
 import ProductCard from "../components/productCard";
 import { useProductData } from "../hooks/useProductData";
 
