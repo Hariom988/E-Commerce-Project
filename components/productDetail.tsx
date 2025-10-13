@@ -52,12 +52,7 @@ const ProductDetail = () => {
     { name: "gold", bg: "bg-yellow-600" },
   ];
 
-  const relatedProducts = allProducts
-    .filter(
-      (item: any) =>
-        item.category === product?.category && item.id !== product?.id
-    )
-    .slice(0, 4);
+  const relatedProducts = allProducts.slice(0, 4);
   // Handlers
   const handleQuantityChange = (action: "increase" | "decrease") => {
     if (action === "increase") {
