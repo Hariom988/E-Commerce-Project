@@ -3,7 +3,6 @@ import shareIcon from "../src/assets/share-icon.svg";
 import whiteHeartIcon from "../src/assets/white-heart-icon.svg";
 
 const ProductCard = ({ fetchedData }: { fetchedData: any[] }) => {
-  console.log(fetchedData);
   return (
     <div
       id="card-container"

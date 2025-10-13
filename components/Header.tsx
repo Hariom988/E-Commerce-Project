@@ -44,7 +44,7 @@ const Header = () => {
                 <div className="flex flex-col mt-7 justify-between gap-4 px-5">
                   <Link to="/">Home</Link>
                   <Link to="/shop">Shop</Link>
-                  <Link to="#about">About</Link>
+                  <Link to="/about">About</Link>
                   <Link to="/contact">Contact</Link>
                   <div className="flex flex-col justify-between mt-7 gap-3">
                     <Link
@@ -80,25 +80,25 @@ const Header = () => {
             <nav className="flex gap-12 items-center justify-between lg:gap-17">
               <Link to="/">Home</Link>
               <Link to="/shop">Shop</Link>
-              <Link to="#about">About</Link>
+              <Link to="/about">About</Link>
               <Link to="/contact">Contact</Link>
             </nav>
             <div
               className="flex gap-5 items-center justify-between lg:gap-11"
               id="icons-section"
             >
-              <a href="">
+              <Link to="">
                 <img className="w-7" src={Account} alt="" />
-              </a>
-              <a href="">
+              </Link>
+              <Link to="">
                 <img src={Search} alt="" />
-              </a>
-              <a href="">
+              </Link>
+              <Link to="">
                 <img className="w-7" src={Heart} alt="" />
-              </a>
-              <a href="">
+              </Link>
+              <Link to="">
                 <img className="w-7" src={Cart} alt="" />
-              </a>
+              </Link>
             </div>
           </div>
         </header>

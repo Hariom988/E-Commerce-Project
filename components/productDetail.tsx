@@ -5,11 +5,6 @@ import Breadcrumb from "../components/Breadcrumb";
 import ProductCard from "../components/productCard";
 import { useProductData } from "../hooks/useProductData";
 
-// Social icons - place icons in public/assets folder
-const FaceBookIcon = "/assets/product-details/facebook-icon.svg";
-const LinkedInIcon = "/assets/product-details/linkedin-icon.svg";
-const TwitterIcon = "/assets/product-details/twitter-icon.svg";
-
 interface Product {
   id: number;
   title: string;
@@ -17,7 +12,7 @@ interface Product {
   price: number;
   rating: number;
   category: string;
-  imgSrc: string;
+  image: string;
   description?: string;
   discount?: number;
   originalPrice?: number;
@@ -37,18 +32,18 @@ const ProductDetail = () => {
   const navigate = useNavigate();
   const product = location.state?.product as Product | undefined;
   const allProducts = useProductData() as any[];
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState(0);
   const [selectedSize, setSelectedSize] = useState("L");
   const [selectedColor, setSelectedColor] = useState("purple");
-  const [mainImage, setMainImage] = useState(product?.imgSrc || "");
+  const [mainImage, setMainImage] = useState(product?.image || "");
   const [activeTab, setActiveTab] = useState("description");
 
   // Product images
   const productImages = [
-    product?.imgSrc || "",
-    product?.imgSrc || "",
-    product?.imgSrc || "",
-    product?.imgSrc || "",
+    product?.image || "",
+    product?.image || "",
+    product?.image || "",
+    product?.image || "",
   ];
   const sizes = ["L", "XL", "XS"];
   const colors = [
@@ -223,7 +218,7 @@ const ProductDetail = () => {
                   type="text"
                   value={quantity}
                   readOnly
-                  className="flex-1 text-center border-x border-gray-300 py-3 focus:outline-none"
+                  className="flex-1 max-w-12 text-center border-x border-gray-300 py-3 focus:outline-none"
                 />
                 <button
                   onClick={() => handleQuantityChange("increase")}
@@ -258,25 +253,7 @@ const ProductDetail = () => {
                 <span className="text-gray-500 min-w-[80px]">Tags</span>
                 <span className="text-gray-600">: Sofa, Chair, Home, Shop</span>
               </div>
-              <div className="flex items-start gap-12">
-                <span className="text-gray-500 min-w-[80px]">Share</span>
-                <div className="flex items-center gap-4 text-black">
-                  <span className="text-gray-600">:</span>
-                  <button className="hover:opacity-70 transition-opacity">
-                    <img src={FaceBookIcon} className="w-6" alt="Facebook" />
-                  </button>
-                  <button className="hover:opacity-70 transition-opacity">
-                    <img src={LinkedInIcon} className="w-5" alt="LinkedIn" />
-                  </button>
-                  <button className="hover:opacity-70 transition-opacity">
-                    <img
-                      src={TwitterIcon}
-                      className="w-5 rounded-sm"
-                      alt="Twitter"
-                    />
-                  </button>
-                </div>
-              </div>
+              <div className="flex items-start gap-12"></div>
             </div>
           </div>
         </div>
@@ -331,14 +308,14 @@ const ProductDetail = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 pt-6">
                   <div className="bg-[#F9F1E7] rounded-lg overflow-hidden">
                     <img
-                      src={product.imgSrc}
+                      src={product.image}
                       alt="Product detail 1"
                       className="w-full h-64 sm:h-80 object-cover"
                     />
                   </div>
                   <div className="bg-[#F9F1E7] rounded-lg overflow-hidden">
                     <img
-                      src={product.imgSrc}
+                      src={product.image}
                       alt="Product detail 2"
                       className="w-full h-64 sm:h-80 object-cover"
                     />
@@ -414,7 +391,7 @@ const ProductDetail = () => {
           <div className="flex justify-center">
             <button
               onClick={() => navigate("/shop")}
-              className="px-16 py-4 border-2 border-[#B88E2F] text-[#B88E2F] text-lg font-semibold hover:bg-[#B88E2F] hover:text-white transition-all duration-300 rounded-md shadow-sm hover:shadow-md"
+              className="px-16 hover:cursor-pointer py-4 border-2 border-[#B88E2F] text-[#B88E2F] text-lg font-semibold hover:bg-[#B88E2F] hover:text-white transition-all duration-300 rounded-md shadow-sm hover:shadow-md"
             >
               Show More
             </button>

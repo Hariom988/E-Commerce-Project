@@ -5,6 +5,7 @@ import arrow from "../src/assets/shop-page/right-arrow.svg";
 import MapIcon from "../src/assets/contact/map-pin-icon.svg";
 import CallIcon from "../src/assets/contact/voice-call-icon.svg";
 import { Link } from "react-router-dom";
+import FeaturesSection from "./FeaturesSection";
 interface ContactFormData {
   name: string;
   email: string;
@@ -235,6 +236,7 @@ const ContactPage: React.FC = () => {
           </div>
         </div>
       </div>
+      <FeaturesSection />
     </div>
   );
 };
